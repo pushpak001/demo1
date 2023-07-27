@@ -1,81 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive 5-Grid Application</title>
-  <!-- Include jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Mobile jQuery</title>
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
   <style>
-    /* Basic CSS styles for the grid items */
-    .grid-container {
-      display: flex;
-      flex-wrap: wrap;
+    .ui-grid-b .ui-block-a,
+    .ui-grid-b .ui-block-b,
+    .ui-grid-b .ui-block-c,
+    .ui-grid-b .ui-block-d,
+    .ui-grid-b .ui-block-e {
+      width: 20%;
     }
-    .grid-item {
-      flex: 1 0 calc(20% - 20px); /* Adjust this based on the number of columns */
-      margin: 10px;
-      border: 1px solid #ccc;
-      padding: 20px;
-      text-align: center;
-    }
-    /* Custom colors for each department */
-    .cs { background-color: #ffcccc; }
-    .it { background-color: #ccffcc; }
-    .entc { background-color: #ccccff; }
-    .elec { background-color: #ffffcc; }
-    .mech { background-color: #ffccff; }
   </style>
 </head>
 <body>
-  <div class="grid-container">
-    <!-- Grid items will be dynamically added here -->
+  <div data-role="page">
+    <div data-role="header">
+      <h1>jQuery Mobile Application MMCOE</h1>
+    </div>
+
+    <div role="main" class="ui-content">
+      <div class="ui-grid-b">
+        <div class="ui-block-a"><a href="IT.html" class="ui-btn ui-corner-all department-btn">IT</a></div>
+        <div class="ui-block-b"><a href="Comp.html" class="ui-btn ui-corner-all department-btn">Comp</a></div>
+        <div class="ui-block-c"><a href="etc.html" class="ui-btn ui-corner-all department-btn">Etc</a></div>
+        <div class="ui-block-d"><a href="MECH.html" class="ui-btn ui-corner-all department-btn">Mech</a></div>
+        <div class="ui-block-e"><a href="Elect.html" class="ui-btn ui-corner-all department-btn">Electrical </a></div>
+        
+      </div>
+    </div>
+
+    
   </div>
+
   <script>
-    $(document).ready(function() {
-      // Sample data for each department
-      var departments = [
-        { name: "Computer Science", code: "cs" },
-        { name: "Information Technology", code: "it" },
-        { name: "Electronics and Telecommunication", code: "entc" },
-        { name: "Electrical", code: "elec" },
-        { name: "Mechanical", code: "mech" }
-      ];
-      
-      function createGridItems() {
-        // Loop through each department
-        for (var i = 0; i < departments.length; i++) {
-          var department = departments[i];
-          var gridItem = '<div class="grid-item ' + department.code + '">' + department.name + '</div>';
-          $('.grid-container').append(gridItem);
-        }
-      }
-      
-      function adjustGrid() {
-        // Get the width of the screen
-        var screenWidth = $(window).width();
-        
-        // Determine the number of columns based on screen width
-        var columns = 5; // Default 5 columns for screens larger than 1200px
-        if (screenWidth < 1200) columns = 4;
-        if (screenWidth < 992) columns = 3;
-        if (screenWidth < 768) columns = 2;
-        if (screenWidth < 576) columns = 1;
-        
-        // Calculate the width of each grid item based on the number of columns
-        var itemWidth = 100 / columns;
-        
-        // Set the width of each grid item
-        $('.grid-item').css('width', itemWidth + '%');
-      }
-      
-      // Create the grid items on document ready
-      createGridItems();
-      
-      // Adjust the grid on page load and window resize
-      adjustGrid();
-      $(window).resize(adjustGrid);
+    $(document).on('pagecreate', function () {
+      $('.department-btn').on('click', function () {
+        var departmentName = $(this).text();
+        ('You clicked on department: ' + departmentName);
+      });
     });
   </script>
 </body>
 </html>
+
