@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive 5-Grid Application</title>
+  <!-- Include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    /* Basic CSS styles for the grid items */
+    .grid-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .grid-item {
+      flex: 1 0 calc(20% - 20px); /* Adjust this based on the number of columns */
+      margin: 10px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      text-align: center;
+    }
+    /* Custom colors for each department */
+    .cs { background-color: #ffcccc; }
+    .it { background-color: #ccffcc; }
+    .entc { background-color: #ccccff; }
+    .elec { background-color: #ffffcc; }
+    .mech { background-color: #ffccff; }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <!-- Grid items will be dynamically added here -->
+  </div>
+  <script>
+    $(document).ready(function() {
+      // Sample data for each department
+      var departments = [
+        { name: "Computer Science", code: "cs" },
+        { name: "Information Technology", code: "it" },
+        { name: "Electronics and Telecommunication", code: "entc" },
+        { name: "Electrical", code: "elec" },
+        { name: "Mechanical", code: "mech" }
+      ];
+      
+      function createGridItems() {
+        // Loop through each department
+        for (var i = 0; i < departments.length; i++) {
+          var department = departments[i];
+          var gridItem = '<div class="grid-item ' + department.code + '">' + department.name + '</div>';
+          $('.grid-container').append(gridItem);
+        }
+      }
+      
+      function adjustGrid() {
+        // Get the width of the screen
+        var screenWidth = $(window).width();
+        
+        // Determine the number of columns based on screen width
+        var columns = 5; // Default 5 columns for screens larger than 1200px
+        if (screenWidth < 1200) columns = 4;
+        if (screenWidth < 992) columns = 3;
+        if (screenWidth < 768) columns = 2;
+        if (screenWidth < 576) columns = 1;
+        
+        // Calculate the width of each grid item based on the number of columns
+        var itemWidth = 100 / columns;
+        
+        // Set the width of each grid item
+        $('.grid-item').css('width', itemWidth + '%');
+      }
+      
+      // Create the grid items on document ready
+      createGridItems();
+      
+      // Adjust the grid on page load and window resize
+      adjustGrid();
+      $(window).resize(adjustGrid);
+    });
+  </script>
+</body>
+</html>
