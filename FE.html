@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Year Engineering</title>
+    <link rel="stylesheet" href="it.css">
 
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    /* Basic CSS styles for the eBook list */
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+    <h1>Welcome To First Year Engineering</h1>
+
+    <br>
+    <h1> <u>First Year Engineering Study Material</u> </h1> 
+  <ul class="ebook-list">
+    <li>
+      <span class="ebook-title">Click & Download First Year Study material</span>
+      <a class="https://drive.google.com/drive/folders/1eYo05d3WvaLaHT79EEX_iiEqwP3HAPM1?usp=share_link" download>Download</a>
+    </li>
+    
+    <!-- Add more eBooks here as needed -->
+  </ul>
+  <script>
+    $(document).ready(function() {
+      // Hide the download links by default
+      $('.download-link').hide();
+      
+      // Show the download link when a user clicks on an eBook title
+      $('.ebook-title').click(function() {
+        // Hide all other download links
+        $('.download-link').hide();
+        
+        // Show the download link for the selected eBook
+        $(this).next('.download-link').show();
+      });
+    });
+  </script>
+  
+
+</body>
+</html>
