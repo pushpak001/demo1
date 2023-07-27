@@ -6,10 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Information Technology</title>
     <link rel="stylesheet" href="it.css">
+
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    /* Basic CSS styles for the eBook list */
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
     <h1>Welcome To IT Department</h1>
 
-    <img src="it.png" alt="Error Page Not Found" >
+    <br>
+    <h1>eBook Download Application</h1>
+  <ul class="ebook-list">
+    <li>
+      <span class="ebook-title">eBook 1</span>
+      <a class="https://drive.google.com/drive/folders/1SW8a5DXKIAwRhha6x1bDCzF3I1u64nFx?usp=share_link" href="https://drive.google.com/drive/folders/1SW8a5DXKIAwRhha6x1bDCzF3I1u64nFx?usp=share_link" download>Download</a>
+    </li>
+    <li>
+      <span class="ebook-title">eBook 2</span>
+      <a class="download-link" href="ebook2.pdf" download>Download</a>
+    </li>
+    <!-- Add more eBooks here as needed -->
+  </ul>
+  <script>
+    $(document).ready(function() {
+      // Hide the download links by default
+      $('.download-link').hide();
+      
+      // Show the download link when a user clicks on an eBook title
+      $('.ebook-title').click(function() {
+        // Hide all other download links
+        $('.download-link').hide();
+        
+        // Show the download link for the selected eBook
+        $(this).next('.download-link').show();
+      });
+    });
+  </script>
+  
+
 </body>
 </html>
