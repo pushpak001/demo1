@@ -3,77 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>smart billing system</title>
-    <!-- Include jQuery library -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Responsive Web Page with Vertical Navbar</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
 
-        header {
+        .navbar {
             background-color: #333;
-            padding: 10px;
-            color: white;
-            text-align: center;
+            overflow: hidden;
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            transition: 0.3s;
         }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-            padding: 10px;
+        .nav-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 20px;
         }
 
-        nav a {
+        .nav-list li {
+            margin-bottom: 10px;
+        }
+
+        .nav-list li a {
+            display: block;
             color: white;
             text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border-radius: 5px;
+            font-size: 16px;
+            padding: 10px;
             transition: background-color 0.3s;
         }
 
-        nav a:hover {
+        .nav-list li a:hover {
             background-color: #555;
         }
 
-        section {
+        .content {
+            margin-left: 250px;
             padding: 20px;
+            transition: margin-left 0.3s;
+        }
+
+        @media screen and (max-width: 600px) {
+            .navbar {
+                width: 0;
+                overflow: hidden;
+            }
+
+            .content {
+                margin-left: 0;
+            }
+        }
+
+        .menu-toggle {
+            cursor: pointer;
+            font-size: 24px;
+            margin: 20px;
+            color: white;
+            display: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            .menu-toggle {
+                display: block;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Smart Billing Systemm...</h1>
-    </header>
+<div class="navbar" id="navbar">
+    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+    <ul class="nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</div>
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-                <a href="#Items">Items</a>
-                <a href="#Wishlist">Wishlist</a>
+<div class="content">
+    <h1>Welcome to our Vertical Navbar Website</h1>
+    <p>This is a simple responsive web page with a vertical navigation bar.</p>
+</div>
 
-
-        
-    </nav>
-
-    <section>
-        <h2>Welcome to our application!</h2>
-        <p></p>
-    </section>
-
-    <script>
-        // Example jQuery code (you can add more as needed)
-        $(document).ready(function () {
-            // Your jQuery code goes here
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#mobile-menu").click(function () {
+            $("#navbar").toggleClass("show");
         });
-    </script>
+
+        $(".nav-list li a").on("click", function () {
+            $("#navbar").removeClass("show");
+        });
+    });
+</script>
+
 </body>
 </html>
